@@ -7,7 +7,6 @@
 #endif
 
 #include "wl_def.h"
-#pragma hdrstop
 
 #ifdef USE_CLOUDSKY
 #include "wl_cloudsky.h"
@@ -52,7 +51,7 @@ void SimpleScaleShape (int xcenter, int shapenum, unsigned height);
 
 int     maporgx;
 int     maporgy;
-enum {mapview,tilemapview,actoratview,visview}  viewtype;
+enum viewtype_t {mapview,tilemapview,actoratview,visview}  viewtype;
 
 void ViewMap (void);
 
@@ -181,7 +180,7 @@ void BasicOverhead (void)
     // left side (filtered)
 
     uintptr_t tile;
-    int color;
+    int color = 0;
     offx -= 128;
 
     for(x=0;x<MAPSIZE;x++)

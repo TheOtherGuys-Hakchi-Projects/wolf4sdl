@@ -1,7 +1,6 @@
 // WL_INTER.C
 
 #include "wl_def.h"
-#pragma hdrstop
 
 LRstruct LevelRatios[LRpack];
 int32_t lastBreathTime = 0;
@@ -386,7 +385,7 @@ Write (int x, int y, const char *string)
                     break;
 
                 default:
-                    VWB_DrawPic (nx, ny, alpha[ch]);
+                    VWB_DrawPic (nx, ny, alpha[(int)ch]);
             }
             nx += 16;
         }

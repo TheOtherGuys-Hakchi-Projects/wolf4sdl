@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <math.h>
 #include "wl_def.h"
-#pragma hdrstop
 
 /*
 =============================================================================
@@ -307,7 +306,7 @@ boolean ProjectileTryMove (objtype *ob)
 void T_Projectile (objtype *ob)
 {
     int32_t deltax,deltay;
-    int     damage;
+    int     damage = 0;
     int32_t speed;
 
     speed = (int32_t)ob->speed*tics;

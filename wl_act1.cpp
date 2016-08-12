@@ -1,7 +1,6 @@
 // WL_ACT1.C
 
 #include "wl_def.h"
-#pragma hdrstop
 
 /*
 =============================================================================
@@ -17,6 +16,7 @@ statobj_t       *laststatobj;
 
 
 struct
+statinfo_t
 {
     short      picnum;
     wl_stat_t  type;
@@ -844,7 +844,7 @@ void MovePWalls (void)
             pwally += dy;
 
             if (actorat[pwallx+dx][pwally+dy]
-                || xl<=pwallx+dx && pwallx+dx<=xh && yl<=pwally+dy && pwally+dy<=yh)
+                || (xl<=pwallx+dx && pwallx+dx<=xh && yl<=pwally+dy && pwally+dy<=yh))
             {
                 pwallstate = 0;
                 tilemap[pwallx][pwally] = oldtile;

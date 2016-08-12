@@ -7,7 +7,6 @@
 #endif
 
 #include "wl_def.h"
-#pragma hdrstop
 #include "wl_atmos.h"
 #include <SDL_syswm.h>
 
@@ -1445,7 +1444,7 @@ void Quit (const char *errorStr, ...)
     if (!pictable)  // don't try to display the red box before it's loaded
     {
         ShutdownId();
-        if (error && *error)
+        if (*error)
         {
 #ifdef NOTYET
             SetTextCursor(0,0);
@@ -1459,7 +1458,7 @@ void Quit (const char *errorStr, ...)
         exit(1);
     }
 
-    if (!error || !*error)
+    if (!*error)
     {
 #ifdef NOTYET
         #ifndef JAPAN
@@ -1479,7 +1478,7 @@ void Quit (const char *errorStr, ...)
 
     ShutdownId ();
 
-    if (error && *error)
+    if (*error)
     {
 #ifdef NOTYET
         memcpy((byte *)0xb8000,screen+7,7*160);
@@ -1493,7 +1492,7 @@ void Quit (const char *errorStr, ...)
         exit(1);
     }
     else
-    if (!error || !(*error))
+    if (!*error)
     {
 #ifdef NOTYET
         #ifndef JAPAN
@@ -1521,7 +1520,9 @@ void Quit (const char *errorStr, ...)
 
 static void DemoLoop()
 {
+#ifndef SPEARDEMO
     int LastDemo = 0;
+#endif
 
 //
 // check for launch from ted
@@ -1734,7 +1735,7 @@ void CheckParameters(int argc, char *argv[])
                 screenWidth = atoi(argv[++i]);
                 screenHeight = atoi(argv[++i]);
                 unsigned factor = screenWidth / 320;
-                if(screenWidth % 320 || screenHeight != 200 * factor && screenHeight != 240 * factor)
+                if(screenWidth % 320 || (screenHeight != 200 * factor && screenHeight != 240 * factor))
                     printf("Screen size must be a multiple of 320x200 or 320x240!\n"), hasError = true;
             }
         }

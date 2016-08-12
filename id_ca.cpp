@@ -25,7 +25,6 @@ loaded into the data segment
 #endif
 
 #include "wl_def.h"
-#pragma hdrstop
 
 #define THREEBYTEGRSTARTS
 
@@ -693,7 +692,7 @@ void CA_Startup (void)
 
 void CA_Shutdown (void)
 {
-    int i,start;
+    int i,start = STARTADLIBSOUNDS;
 
     if(maphandle != -1)
         close(maphandle);
@@ -803,7 +802,7 @@ void CA_CacheAdlibSoundChunk (int chunk)
 
 void CA_LoadAllSounds (void)
 {
-    unsigned start,i;
+    unsigned start = STARTADLIBSOUNDS,i;
 
     switch (oldsoundmode)
     {
@@ -1045,7 +1044,7 @@ void CA_CacheMap (int mapnum)
     int32_t   pos,compressed;
     int       plane;
     word     *dest;
-    memptr    bigbufferseg;
+    memptr    bigbufferseg = 0;
     unsigned  size;
     word     *source;
 #ifdef CARMACIZED

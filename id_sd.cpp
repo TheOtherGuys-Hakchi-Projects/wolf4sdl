@@ -849,6 +849,7 @@ SDL_ShutAL(void)
 //      SDL_CleanAL() - Totally shuts down the AdLib card
 //
 ///////////////////////////////////////////////////////////////////////////
+/*
 static void
 SDL_CleanAL(void)
 {
@@ -858,6 +859,7 @@ SDL_CleanAL(void)
     for (i = 1; i < 0xf5; i++)
         alOut(i, 0);
 }
+*/
 
 ///////////////////////////////////////////////////////////////////////////
 //
@@ -877,6 +879,7 @@ SDL_StartAL(void)
 //              emulating an AdLib) present
 //
 ///////////////////////////////////////////////////////////////////////////
+/*
 static boolean
 SDL_DetectAdLib(void)
 {
@@ -888,6 +891,7 @@ SDL_DetectAdLib(void)
 
     return true;
 }
+*/
 
 ////////////////////////////////////////////////////////////////////////////
 //
@@ -914,12 +918,14 @@ SDL_ShutDevice(void)
 //      SDL_CleanDevice() - totally shuts down all sound devices
 //
 ///////////////////////////////////////////////////////////////////////////
+/*
 static void
 SDL_CleanDevice(void)
 {
     if ((SoundMode == sdm_AdLib) || (MusicMode == smm_AdLib))
         SDL_CleanAL();
 }
+*/
 
 ///////////////////////////////////////////////////////////////////////////
 //
