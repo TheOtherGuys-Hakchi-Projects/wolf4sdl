@@ -3,6 +3,10 @@
 
 #ifndef VERSIONALREADYCHOSEN              // used for batch compiling
 
+#ifndef DATADIR
+#define DATADIR ""
+#endif
+
 /* Defines used for different versions */
 
 //#define SPEAR
