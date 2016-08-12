@@ -102,6 +102,7 @@ int     param_audiobuffer = 2048 / (44100 / param_samplerate);
 int     param_mission = 0;
 boolean param_goodtimes = false;
 boolean param_ignorenumchunks = false;
+boolean param_shading = false;
 
 /*
 =============================================================================
@@ -1717,6 +1718,10 @@ void CheckParameters(int argc, char *argv[])
             fullscreen = false;
             forcegrabmouse = true;
         }
+#ifdef USE_SHADING
+        else IFARG("--shading")
+            param_shading = true;
+#endif
         else IFARG("--res")
         {
             if(i + 2 >= argc)
@@ -1897,6 +1902,9 @@ void CheckParameters(int argc, char *argv[])
             " --hard                 Sets the difficulty to hard for tedlevel\n"
             " --nowait               Skips intro screens\n"
             " --windowed[-mouse]     Starts the game in a window [and grabs mouse]\n"
+#ifdef USE_SHADING
+            " --shading              Enables shading support\n"
+#endif
             " --res <width> <height> Sets the screen resolution\n"
             "                        (must be multiple of 320x200 or 320x240)\n"
             " --resf <w> <h>         Sets any screen resolution >= 320x200\n"

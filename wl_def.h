@@ -933,6 +933,7 @@ extern  int      param_audiobuffer;
 extern  int      param_mission;
 extern  boolean  param_goodtimes;
 extern  boolean  param_ignorenumchunks;
+extern  boolean  param_shading;
 
 
 void            NewGame (int difficulty,int episode);
