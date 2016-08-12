@@ -935,6 +935,7 @@ extern  boolean  param_goodtimes;
 extern  boolean  param_ignorenumchunks;
 extern  boolean  param_shading;
 extern  boolean  param_novert;
+extern  boolean  param_crosshair;
 
 
 void            NewGame (int difficulty,int episode);

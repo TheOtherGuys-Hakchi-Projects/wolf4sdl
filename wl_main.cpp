@@ -103,6 +103,7 @@ boolean param_goodtimes = false;
 boolean param_ignorenumchunks = false;
 boolean param_shading = false;
 boolean param_novert = false;
+boolean param_crosshair = false;
 
 /*
 =============================================================================
@@ -1726,6 +1727,8 @@ void CheckParameters(int argc, char *argv[])
 #endif
         else IFARG("--novert")
             param_novert = true;
+        else IFARG("--crosshair")
+            param_crosshair = true;
         else IFARG("--res")
         {
             if(i + 2 >= argc)
@@ -1910,6 +1913,7 @@ void CheckParameters(int argc, char *argv[])
             " --shading              Enables shading support\n"
 #endif
             " --novert               Suppresses vertical mouse movement\n"
+            " --crosshair            Shows a crosshair\n"
             " --res <width> <height> Sets the screen resolution\n"
             "                        (must be multiple of 320x200 or 320x240)\n"
             " --resf <w> <h>         Sets any screen resolution >= 320x200\n"
