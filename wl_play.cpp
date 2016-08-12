@@ -273,6 +273,7 @@ void PollKeyboardButtons (void)
 void PollMouseButtons (void)
 {
     int buttons = IN_MouseButtons ();
+    extern boolean mw_dn, mw_up;
 
     if (buttons & 1)
         buttonstate[buttonmouse[0]] = true;
@@ -280,6 +281,12 @@ void PollMouseButtons (void)
         buttonstate[buttonmouse[1]] = true;
     if (buttons & 4)
         buttonstate[buttonmouse[2]] = true;
+
+    if (mw_dn)
+        buttonstate[bt_prevweapon] = true;
+    if (mw_up)
+        buttonstate[bt_nextweapon] = true;
+    mw_dn = mw_up = false;
 }
 
 

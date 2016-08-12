@@ -237,6 +237,8 @@ boolean IN_JoyPresent()
     return Joystick != NULL;
 }
 
+boolean mw_dn = false, mw_up = false;
+
 static void processEvent(SDL_Event *event)
 {
     switch (event->type)
@@ -325,6 +327,15 @@ static void processEvent(SDL_Event *event)
 
 //            if(key<SDLK_LAST)
             Keyboard[key] = 0;
+            break;
+        }
+
+        case SDL_MOUSEWHEEL:
+        {
+            if (event->wheel.y > 0)
+                mw_dn = true;
+            else
+                mw_up = true;
             break;
         }
 
