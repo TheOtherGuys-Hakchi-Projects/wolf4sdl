@@ -255,10 +255,19 @@ int songs[] = {
 void PollKeyboardButtons (void)
 {
     int i;
+    extern boolean autorun;
 
     for (i = 0; i < NUMBUTTONS; i++)
         if (Keyboard[buttonscan[i]])
             buttonstate[i] = true;
+
+    if (autorun)
+    {
+        if (Keyboard[buttonscan[bt_run]])
+            buttonstate[bt_run] = false;
+        else
+            buttonstate[bt_run] = true;
+    }
 }
 
 

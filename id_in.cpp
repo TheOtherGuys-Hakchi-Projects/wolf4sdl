@@ -238,6 +238,7 @@ boolean IN_JoyPresent()
 }
 
 boolean mw_dn = false, mw_up = false;
+boolean autorun = false;
 
 static void processEvent(SDL_Event *event)
 {
@@ -259,6 +260,19 @@ static void processEvent(SDL_Event *event)
 
             LastScan = event->key.keysym.sym;
             SDL_Keymod mod = SDL_GetModState();
+            if ((mod & KMOD_LSHIFT) && (mod & KMOD_RSHIFT))
+            {
+                autorun = !autorun;
+
+                if (autorun)
+                    Message ("Always Run: On");
+                else
+                    Message ("Always Run: Off");
+
+                IN_ClearKeysDown ();
+                IN_Ack ();
+            }
+
             if(Keyboard[sc_Alt])
             {
                 if(LastScan==SDLK_F4)
