@@ -33,6 +33,12 @@ if [ "$ok" == 1 ]; then
 	#Change the HOME environment variable for running on the mini...
 	HOME="$WOLFTrueDir/WOLF_3D_files"
 	export HOME
+
+	#Clean down the volatile Wolf3D memory and reload it
+	tmppath="/tmp/wolf3d"
+	rm -rf "$tmppath"
+	mkdir -p "$tmppath"
+	cp $WOLFTrueDir/WOLF_3D_files/*.wl6 $tmppath
 	
 	chmod +x $WOLFTrueDir/WOLF_3D_files/wolf3d
 	
