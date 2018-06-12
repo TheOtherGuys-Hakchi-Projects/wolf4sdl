@@ -5,6 +5,7 @@
 //
 ////////////////////////////////////////////////////////////////////
 
+#include <string>
 #include <sys/stat.h>
 #include <sys/types.h>
 #ifdef _WIN32
@@ -4094,6 +4095,41 @@ CheckForEpisodes (void)
             }
         }
     }
+
+//
+// Hakchi additions ~ Ryan 'Swingflip' Hamlin
+//
+  system("echo \"===Hakchi Wolfenstein3D (Wolf4SDL)======================\"");
+  system("echo \"Hakchi Wolfensein3D additions by Ryan 'Swingflip' Hamlin\"");
+  system("echo \"Wolf4SDL by Moritz 'Ripper' Kroll\"");
+  system("echo \"Wolfenstein3D by John Romero (C) 1992 Id Software, Inc.\"");
+  system("echo \"========================================================\"");
+
+
+#ifdef SPEAR
+  system("echo Detected: Spear of Destiny");
+#ifdef SPEARDEMO
+  system("echo SHAREWARE DEMO build");
+#else
+  system("echo FULL RETAIL build");
+#endif 
+#else
+  system("echo Detected: Standard Wolfenstein3D");
+#ifdef UPLOAD
+  system("echo SHAREWARE DEMO build");
+#else
+  system("echo FULL RETAIL build");
+#endif
+#endif
+
+system("echo \"========================================================\"");
+
+std::string datadir_string =DATADIR;
+std::string check_string = "echo Checking for game files in: "+datadir_string;
+
+system(check_string.c_str());
+
+system("echo \"========================================================\"");
 
 //
 // JAPANESE VERSION
