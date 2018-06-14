@@ -46,10 +46,12 @@ if [ "$ok" == 1 ]; then
 
 	$WOLFTrueDir/WOLF_3D_files/ldd $WOLFTrueDir/WOLF_3D_files/wolf3d &> $WOLFTrueDir/wolf3dtest_ldd.log
 	
-	$WOLFTrueDir/WOLF_3D_files/wolf3d &> $WOLFTrueDir/wolf3dtest.log
+	$WOLFTrueDir/WOLF_3D_files/wolf3d --bits 32 &> $WOLFTrueDir/wolf3dtest.log
 	
 	#Clear cache and inodes for good measure...
 	echo 3 > /proc/sys/vm/drop_caches	
+	
+	reboot
 else
 	decodepng "$WOLFTrueDir/Hakchi_WOLF_assets/wolferror_files-min.png" > /dev/fb0;
 	sleep 5
