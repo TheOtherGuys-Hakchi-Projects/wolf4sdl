@@ -36,7 +36,7 @@ boolean forcegrabmouse;
 
 
 // 	Global variables
-std::map<int,kBoolean> Keyboard;
+std::map<int,Boolean> Keyboard;
 volatile boolean	Paused;
 volatile char		LastASCII;
 volatile ScanCode	LastScan;
@@ -60,6 +60,7 @@ int JoyNumButtons;
 static int JoyNumHats;
 
 static bool GrabInput = false;
+static bool NeedRestore = false;
 
 /*
 =============================================================================
