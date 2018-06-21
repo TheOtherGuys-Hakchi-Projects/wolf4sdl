@@ -36,7 +36,7 @@ boolean forcegrabmouse;
 
 
 // 	Global variables
-std::map<int,Boolean> Keyboard;
+std::map<int,boolean> Keyboard;
 volatile boolean	Paused;
 volatile char		LastASCII;
 volatile ScanCode	LastScan;
