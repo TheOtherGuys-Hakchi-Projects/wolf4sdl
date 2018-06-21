@@ -39,13 +39,13 @@ if [ "$ok" == 1 ]; then
 	tmppath="/tmp/wolf3d"
 	rm -rf "$tmppath"
 	mkdir -p "$tmppath"
-	cp $WOLFTrueDir/WOLF_3D_files/*.wl6 $tmppath
+	cp $WOLFTrueDir/WOLF_3D_files/* $tmppath
 	
 	chmod +x $WOLFTrueDir/WOLF_3D_files/wolf3d
 	
 	cd $WOLFTrueDir/WOLF_3D_files/
 	
-	$WOLFTrueDir/WOLF_3D_files/wolf3d --bits 32 &> $WOLFTrueDir/wolf3dtest.log
+	$WOLFTrueDir/WOLF_3D_files/wolf3d --bits 32
 	
 	#Clear cache and inodes for good measure...
 	echo 3 > /proc/sys/vm/drop_caches	

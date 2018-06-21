@@ -1,0 +1,18 @@
+[Desktop Entry]
+Type=Application
+Exec=/bin/sh /var/games/CLV-Z-HAKCHI_WOLF_SPEAR/hakchi_WOLF.sh
+Path=/var/lib/clover/profiles/0/CLV-Z-HAKCHI_WOLF_SPEAR
+Name=Hakchi Wolfenstein 3D Spear of Destiny
+Icon=/var/games/CLV-Z-HAKCHI_WOLF_SPEAR/CLV-Z-HAKCHI_WOLF_SPEAR.png
+
+[X-CLOVER Game]
+Code=CLV-Z-HAKCHI_WOLF_SPEAR
+TestID=0
+ID=0
+Players=1
+Simultaneous=0
+ReleaseDate=1900-01-01
+SaveCount=0
+SortRawTitle=_hakchi wolfenstein3d spear
+SortRawPublisher=ID
+Copyright=hakchi2 ©2018 Swingflip

@@ -9,7 +9,7 @@
 
 /* Defines used for different versions */
 
-//#define SPEAR
+#define SPEAR
 //#define SPEARDEMO
 //#define UPLOAD
 #define GOODTIMES
