@@ -147,7 +147,7 @@ public:
     operator boolean&(){return value;}
 };
 
-extern           std::map<int,kBoolean> Keyboard;
+extern           std::map<int,boolean> Keyboard;
 extern           boolean    MousePresent;
 extern  volatile boolean    Paused;
 extern  volatile char       LastASCII;
