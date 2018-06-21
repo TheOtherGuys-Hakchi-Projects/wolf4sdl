@@ -44,8 +44,6 @@ if [ "$ok" == 1 ]; then
 	chmod +x $WOLFTrueDir/WOLF_3D_files/wolf3d
 	
 	cd $WOLFTrueDir/WOLF_3D_files/
-
-	$WOLFTrueDir/WOLF_3D_files/ldd $WOLFTrueDir/WOLF_3D_files/wolf3d &> $WOLFTrueDir/wolf3dtest_ldd.log
 	
 	$WOLFTrueDir/WOLF_3D_files/wolf3d --bits 32 &> $WOLFTrueDir/wolf3dtest.log
 	
