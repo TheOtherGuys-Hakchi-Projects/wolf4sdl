@@ -39,7 +39,7 @@ if [ "$ok" == 1 ]; then
 	tmppath="/tmp/wolf3d"
 	rm -rf "$tmppath"
 	mkdir -p "$tmppath"
-	cp $WOLFTrueDir/WOLF_3D_files/*.wl6 $tmppath
+	cp $WOLFTrueDir/WOLF_3D_files/*.wl1 $tmppath
 	
 	chmod +x $WOLFTrueDir/WOLF_3D_files/wolf3d
 	

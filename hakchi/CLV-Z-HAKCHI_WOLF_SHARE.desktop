@@ -1,0 +1,18 @@
+[Desktop Entry]
+Type=Application
+Exec=/bin/sh /var/games/CLV-Z-HAKCHI_WOLF_SHARE/hakchi_WOLF.sh
+Path=/var/lib/clover/profiles/0/CLV-Z-HAKCHI_WOLF_SHARE
+Name=Hakchi Wolfenstein 3D (Shareware)
+Icon=/var/games/CLV-Z-HAKCHI_WOLF_SHARE/CLV-Z-HAKCHI_WOLF_SHARE.png
+
+[X-CLOVER Game]
+Code=CLV-Z-HAKCHI_WOLF_SHARE
+TestID=0
+ID=0
+Players=1
+Simultaneous=0
+ReleaseDate=1900-01-01
+SaveCount=0
+SortRawTitle=_hakchi wolfenstein3d shareware
+SortRawPublisher=ID
+Copyright=hakchi2 ©2018 Swingflip
