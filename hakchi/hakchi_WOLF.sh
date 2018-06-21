@@ -25,7 +25,7 @@ if [ "$ok" == 1 ]; then
 	decodepng "$WOLFTrueDir/Hakchi_WOLF_assets/wolfsplash-min.png" > /dev/fb0;
 
 	#Load in the extra libraries required to run on SNESC
-	[ ! -L $WOLFTrueDir/lib/libSDL2-2.0.so.0 ] && ln -sf "/usr/lib/libSDL2.so" "$WOLFTrueDir/lib/libSDL2-2.0.so.0"
+	[ ! -L $WOLFTrueDir/lib/libSDL2-2.0.so.0 ] && ln -sf "$WOLFTrueDir/lib/libSDL2.so" "$WOLFTrueDir/lib/libSDL2-2.0.so.0"
 
 	LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$WOLFTrueDir/lib
 	export LD_LIBRARY_PATH
