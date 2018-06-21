@@ -18,13 +18,12 @@
 //
 
 #include "wl_def.h"
+#include "id_in.h"
 
 
 /*
 =============================================================================
-
 					GLOBAL VARIABLES
-
 =============================================================================
 */
 
@@ -37,10 +36,10 @@ boolean forcegrabmouse;
 
 
 // 	Global variables
-std::map<ScanCode, boolean>    Keyboard;
+std::map<int,kBoolean> Keyboard;
 volatile boolean	Paused;
 volatile char		LastASCII;
-ScanCode		LastScan;
+volatile ScanCode	LastScan;
 
 //KeyboardDef	KbdDefs = {0x1d,0x38,0x47,0x48,0x49,0x4b,0x4d,0x4f,0x50,0x51};
 static KeyboardDef KbdDefs = {
@@ -61,13 +60,10 @@ int JoyNumButtons;
 static int JoyNumHats;
 
 static bool GrabInput = false;
-static bool NeedRestore = false;
 
 /*
 =============================================================================
-
 					LOCAL VARIABLES
-
 =============================================================================
 */
 byte        ASCIINames[] =		// Unshifted ASCII for scan codes       // TODO: keypad
@@ -171,13 +167,25 @@ void IN_GetJoyDelta(int *dx,int *dy)
             y += 127;
         else if(hatState & SDL_HAT_UP)
             y -= 127;
-
-        if(x < -128) x = -128;
-        else if(x > 127) x = 127;
-
-        if(y < -128) y = -128;
-        else if(y > 127) y = 127;
     }
+
+#if 1//defined(NESMINI) && clovercon
+    int bt=IN_JoyButtons();
+    if(bt & (1<<12))
+        x += 127;
+    else if(bt & (1<<11))
+        x -= 127;
+    if(bt & (1<<14))
+        y += 127;
+    else if(bt & (1<<13))
+        y -= 127;
+#endif
+
+    if(x < -128) x = -128;
+    else if(x > 127) x = 127;
+
+    if(y < -128) y = -128;
+    else if(y > 127) y = 127;
 
     *dx = x;
     *dy = y;
@@ -229,6 +237,36 @@ int IN_JoyButtons()
     int res = 0;
     for(int i = 0; i < JoyNumButtons && i < 32; i++)
         res |= SDL_JoystickGetButton(Joystick, i) << i;
+#if 1
+    static int prev=0;
+    int c=res^prev;
+#if 0
+    for(int i = 0; i < JoyNumButtons && i < 32; i++)
+    {
+        if(c&1)
+            printf("button %i changed\n",i);
+        c>>=1;
+    }
+#endif
+#if 1
+    if(c&(1<<8))
+    {
+        res^=res&(1<<8);
+        LastScan = sc_Escape;
+        Keyboard[int(LastScan)] = (res>>8)&1;
+    }
+#endif
+#if 0
+    if(c&(1<<9))
+    {
+        res^=res&(1<<9);
+        LastScan = SDLK_PAUSE;
+        Keyboard[int(LastScan)] = (res>>9)&1;
+        Paused = true;
+    }
+#endif
+    prev=c;
+#endif
     return res;
 }
 
@@ -311,8 +349,7 @@ static void processEvent(SDL_Event *event)
                 if(sym < lengthof(ASCIINames) && ASCIINames[sym])
                     LastASCII = ASCIINames[sym];
             }
-//            if(LastScan<SDLK_LAST)
-            Keyboard[LastScan] = 1;
+            Keyboard[int(LastScan)] = 1;
             if(LastScan == SDLK_PAUSE)
                 Paused = true;
             break;
@@ -339,7 +376,6 @@ static void processEvent(SDL_Event *event)
                 }
             }
 
-//            if(key<SDLK_LAST)
             Keyboard[key] = 0;
             break;
         }
@@ -427,8 +463,8 @@ IN_Startup(void)
             JoyNumButtons = SDL_JoystickNumButtons(Joystick);
             if(JoyNumButtons > 32) JoyNumButtons = 32;      // only up to 32 buttons are supported
             JoyNumHats = SDL_JoystickNumHats(Joystick);
-            if(param_joystickhat < -1 || param_joystickhat >= JoyNumHats)
-                Quit("The joystickhat param must be between 0 and %i!", JoyNumHats - 1);
+//            if(param_joystickhat < -1 || param_joystickhat >= JoyNumHats)
+//                Quit("The joystickhat param must be between 0 and %i!", JoyNumHats - 1);
         }
     }
 

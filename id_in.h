@@ -12,6 +12,9 @@
 #define	__DEBUG_InputMgr__
 #endif
 
+#include <SDL_keycode.h>
+#include <map>
+
 typedef	int		ScanCode;
 #define	sc_None			0
 #define	sc_Bad			0xff
@@ -136,11 +139,19 @@ typedef	struct		{
 									joyMultXH,joyMultYH;
 					} JoystickDef;
 // Global variables
-extern  std::map<ScanCode, boolean>    Keyboard;
+class kBoolean
+{
+    boolean value;
+public:
+    kBoolean(boolean v=0):value(v){}
+    operator boolean&(){return value;}
+};
+
+extern           std::map<int,kBoolean> Keyboard;
 extern           boolean    MousePresent;
 extern  volatile boolean    Paused;
 extern  volatile char       LastASCII;
-extern           ScanCode   LastScan;
+extern  volatile ScanCode   LastScan;
 extern           int        JoyNumButtons;
 extern           boolean    forcegrabmouse;
 

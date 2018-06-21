@@ -20,6 +20,7 @@
 #	include <stdarg.h>
 #endif
 #include <SDL.h>
+#include <SDL_keycode.h>
 
 #if !defined O_BINARY
 #	define O_BINARY 0
