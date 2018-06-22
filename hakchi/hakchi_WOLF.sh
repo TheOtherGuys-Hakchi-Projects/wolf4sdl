@@ -3,8 +3,8 @@
 source /etc/preinit
 script_init
 
-# Kill it! Kill it with fire!
-pkill -KILL clover-mcp
+# Kill it! Kill it with fire! (not in this case...)
+# pkill -KILL clover-mcp
 
 #Clear cache and inodes for good measure...
 echo 3 > /proc/sys/vm/drop_caches
@@ -19,6 +19,10 @@ if [ -f "/usr/share/games/$GameName/$GameName.desktop" ]; then
 	WOLFTrueDir=$(grep /usr/share/games/$GameName/$GameName.desktop -e 'Exec=' | awk '{print $2}' | sed 's/\([/\t]\+[^/\t]*\)\{1\}$//')
 	WOLFPortableFiles="$WOLFTrueDir/WOLF_3D_files"
 	ok=1
+fi
+
+if [ ! -f "$WOLFPortableFiles/gamemaps.wl6" ]; then
+  ok=0
 fi
 
 if [ "$ok" == 1 ]; then
@@ -45,12 +49,12 @@ if [ "$ok" == 1 ]; then
 	
 	cd $WOLFTrueDir/WOLF_3D_files/
 	
-	$WOLFTrueDir/WOLF_3D_files/wolf3d --bits 32 &> $WOLFTrueDir/wolf3dtest.log
+	$WOLFTrueDir/WOLF_3D_files/wolf3d --bits 32 &> $WOLFTrueDir/wolf3d.log
 	
 	#Clear cache and inodes for good measure...
 	echo 3 > /proc/sys/vm/drop_caches	
 	
-	reboot
+	sleep 1
 else
 	decodepng "$WOLFTrueDir/Hakchi_WOLF_assets/wolferror_files-min.png" > /dev/fb0;
 	sleep 5
